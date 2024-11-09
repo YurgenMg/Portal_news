@@ -1,0 +1,529 @@
+/* Estilos Generales */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: url("cieloestrellado.png") no-repeat center center fixed;
+    background-size: cover;
+    color: #243642;
+    font-family: Arial, sans-serif;
+}
+
+/* Encabezado con efecto de caja de vidrio */
+.encabezado {
+    background-image: url('cieloestrellado.png'); /* Ruta de la imagen de fondo */
+    background-size: cover;
+    background-position: center;
+    padding: 20px;
+    color: #243642;
+ /* Adjusted color */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    backdrop-filter: blur(10px); /* Efecto de borrosidad */
+    background-color: rgba(48, 217, 174, 0.8); /* Color de fondo semitransparente */
+    border-radius: 10px;
+}
+
+/* Contenedor del encabezado */
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* Logo */
+.logo {
+    width: 60px; /* Ajusta según el tamaño que prefieras */
+    height: auto;
+    margin-right: 10px; /* Espacio entre el logo y el texto */
+    vertical-align: middle;
+}
+
+/* Estilo para el título */
+.header-title {
+    text-align: center;
+    flex-grow: 1;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Fecha ubicada a la derecha */
+.fecha-actual {
+    position: absolute;
+    right: 20px; /* Ajusta este valor según la separación que prefieras del borde derecho */
+    top: 50%;
+    transform: translateY(-50%);
+    font-size: 14px;
+    color: whitesmoke;
+ /* Adjusted color */
+    opacity: 0.5;
+}
+
+/* Glitch Effect */
+.glitch-wrapper {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+.glitch {
+    position: relative;
+    font-size: 40px; /* Ajusta según el tamaño que prefieras */
+    font-weight: 700;
+    line-height: 1.2;
+    color: #fff;
+    letter-spacing: 2px;
+    animation: shift 4s ease-in-out infinite alternate;
+    z-index: 1;
+}
+
+.glitch:before {
+    content: attr(data-glitch);
+    position: absolute;
+    top: 0;
+    left: -2px;
+    text-shadow: -1px 0 #0ff;
+    width: 100%;
+    color: #fff;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+    animation: noise-before 3s infinite linear alternate-reverse;
+}
+
+.glitch:after {
+    content: attr(data-glitch);
+    position: absolute;
+    top: 0;
+    left: 2px;
+    text-shadow: 1px 0 #ff00ff;
+    width: 100%;
+    color: #fff;
+    overflow: hidden;
+    clip: rect(0, 900px, 0, 0);
+    animation: noise-after 2s infinite linear alternate-reverse;
+}
+
+/* Animaciones de glitch */
+@keyframes noise-before {
+    0% { clip: rect(61px, 9999px, 52px, 0); }
+    5% { clip: rect(33px, 9999px, 144px, 0); }
+    100% { clip: rect(173px, 9999px, 166px, 0); }
+}
+
+@keyframes noise-after {
+    0% { clip: rect(26px, 9999px, 33px, 0); }
+    5% { clip: rect(140px, 9999px, 198px, 0); }
+    100% { clip: rect(67px, 9999px, 122px, 0); }
+}
+
+@keyframes shift {
+    0%, 40%, 44%, 58%, 61%, 65%, 69%, 73%, 100% { transform: skewX(0deg); }
+    41% { transform: skewX(10deg); }
+    71% { transform: skewX(10deg) skewY(-10deg); }
+}
+
+/* Barra de navegación */
+.barra-navegacion{
+    background-color: rgba(36, 54, 66, 0.9);
+}
+.barra-navegacion ul {
+    display: flex;
+    justify-content: space-around;
+    background-color: #243642;
+    padding: 10px;
+    list-style: none;
+}
+
+.barra-navegacion ul li {
+    position: relative;
+}
+
+.barra-navegacion ul li a {
+    color: #b1c5d2;
+ /* Adjusted color */
+    text-decoration: none;
+    padding: 10px 15px;
+    transition: color 0.3s;
+}
+
+/* Animación y efecto hover para enlaces de la barra de navegación */
+.barra-navegacion ul li a::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #387478; /* Color del subrayado */
+    transform: scaleX(0);
+    transition: transform 0.3s ease;
+}
+
+.barra-navegacion ul li a:hover::before {
+    transform: scaleX(1);
+}
+
+.barra-navegacion ul li a:hover {
+    color: #ffffff; /* Cambia el color del texto al pasar el cursor */
+}
+
+.nav-list li a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: #ffffff;
+    transition: background-color 0.3s ease;
+}
+
+/* Layout Principal */
+.layout-principal {
+    display: flex;
+    padding: 20px;
+    gap: 20px; /* Añade espacio entre el aside y el contenedor de noticias */
+}
+
+
+/* Aside */
+.publicidad {
+    background-image: url("slogan-famoso-1.jpg"); /* Asegúrate de que la ruta de la imagen sea correcta */
+    background-size: contain; /* Mantén la imagen completa sin recortarla */
+    background-position: center;
+    background-repeat: no-repeat;
+    padding: 20px;
+    color: #ffffff;
+    border-radius: 8px;
+    box-shadow: none; /* Elimina la sombra */
+}
+
+/* Fondo semitransparente solo si el texto necesita ser más legible */
+.publicidad h2, .publicidad p {
+    background-color: rgba(0, 0, 0, 0.6); /* Fondo semitransparente */
+    padding: 5px;
+    border-radius: 4px;
+    position: relative;
+    z-index: 1;
+}
+
+/* Contenedor de Noticias */
+.contenedor-noticias {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+    justify-content: space-between;
+}
+
+/* Estilos para cada noticia */
+.noticia {
+    flex: 0 0 23%;
+    background-color: #4a7f72;
+    padding: 15px;
+    border-radius: 8px;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+ /* Adjusted color */
+}
+
+.noticia:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+.noticia.alterna {
+    background-color: #243642;
+}
+
+/* Estilos para el contenido de cada noticia */
+.titulo-noticia {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.contenido-noticia {
+    display: flex;
+    gap: 15px;
+}
+
+.resumen-noticia {
+    font-size: 18px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+.imagen-noticia {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    max-width: 200px;
+    margin: 0 auto;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 15px;
+    box-shadow: 0 4px 10 px rgba(0, 0, 0, 0.2);
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    overflow: hidden;
+}
+
+.imagen-noticia img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.imagen-noticia figure {
+    position: relative;
+    display: inline-block;
+}
+
+.imagen-noticia figcaption {
+    position: absolute;
+    bottom: 50%;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: whitesmoke;
+    padding: 5px 10px;
+    border-radius: 5px;
+    text-align: center;
+    font-size: 1em;
+}
+
+.leer-mas {
+    font-size: 18px;
+    background-color: #2e5a4f;
+    color: #f0f0f0;
+ /* Adjusted color */
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+
+.leer-mas:hover {
+    background-color: #3a7463;
+}
+
+/* Footer */
+.pie-pagina {
+    background-color: #243642;
+    color: #88b0ca;
+ /* Adjusted color */
+    text-align: center;
+    padding: 10px;
+}
+
+/* Contenedor de Noticias */
+.contenedor-noticias1 {
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+    width: 75%;
+}
+
+/* Estilos para cada noticia */
+.noticia1 {
+    width: 45%;
+    background-color: #4a7f72;
+    padding: 15px;
+    border-radius: 8px;
+    color: #ffffff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.noticia1:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* Estilo del título de la noticia */
+.titulo-noticia1 {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Estilo de la imagen de la noticia */
+.imagen-noticia1 {
+    margin-bottom: 10px;
+}
+
+.imagen-noticia1 img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.3);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilo del resumen de la noticia */
+.resumen-noticia1 {
+    font-size: 16px;
+    line-height: 1.6;
+    margin-bottom: 10px;
+    text-align: justify;
+}
+
+/* Estilo del botón Leer más */
+.leer-mas1 {
+    font-size: 16px;
+    background-color: #2e5a4f;
+    color: #f0f0f0;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+}
+
+.leer-mas1:hover {
+    background-color: #3a7463;
+}
+
+
+.contenedor-noticias2 {
+    width: 100%;
+    display: flex;
+    flex-direction: column; /* Apila los artículos verticalmente */
+    gap: 20px; /* Espacio entre las cajas */
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+/* Estilos para cada artículo (noticia) */
+.orden2 {
+    background-color: #e0e0e0;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Título de la noticia */
+.titulo-noticia2 h2 {
+    font-size: 26px;
+    color: #333;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+/* Flexbox en el desarrollo de la noticia: pone el texto y la imagen en una fila */
+.desarrollo_noticia2 {
+    display: flex;
+    flex-direction: row; /* Coloca el texto y la imagen uno al lado del otro */
+    gap: 20px; /* Espacio entre el texto y la imagen */
+    align-items: center; /* Alinea verticalmente al centro */
+}
+
+/* Desarrollo de la noticia (texto) */
+.desarrollo_noticia2 p {
+    flex: 1; /* El texto ocupa el espacio restante */
+    font-size: 16px;
+    color: #444;
+    text-align: justify;
+}
+
+/* Imagen dentro de la figura */
+.desarrollo_noticia2 figure {
+    max-width: 200px; /* Controla el tamaño máximo de la imagen */
+}
+
+.desarrollo_noticia2 img {
+    width: 100%; /* Imagen ocupa el ancho máximo del contenedor */
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* Figcaption para el texto de la imagen */
+.desarrollo_noticia2 figcaption {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}
+
+/* Estilos para tablets (ancho de 768px a 1024px) */
+@media (max-width: 1024px) and (min-width: 768px) {
+    .layout-principal {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .publicidad {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .contenedor-noticias, .contenedor-noticias1, .contenedor-noticias2 {
+        width: 100%;
+    }
+
+    .noticia, .noticia1, .orden2 {
+        flex: 0 0 48%;
+        margin-bottom: 20px;
+    }
+}
+
+/* Estilos para dispositivos móviles (menos de 768px) */
+@media (max-width: 767px) {
+    .layout-principal {
+        flex-direction: column;
+        padding: 10px;
+    }
+
+    .barra-navegacion ul {
+        flex-direction: column;
+        padding: 0;
+    }
+
+    .nav-list li {
+        margin-bottom: 10px;
+    }
+
+    .publicidad {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .contenedor-noticias, .contenedor-noticias1, .contenedor-noticias2 {
+        flex-direction: column;
+        gap: 10px;
+        padding: 10px;
+    }
+
+    .noticia, .noticia1, .orden2 {
+        flex: 0 0 100%;
+    }
+
+    .glitch {
+        font-size: 24px;
+    }
+
+    .fecha-actual {
+        font-size: 12px;
+        right: 10px;
+    }
+}
